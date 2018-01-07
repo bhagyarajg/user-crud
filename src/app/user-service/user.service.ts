@@ -1,0 +1,32 @@
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
+
+@Injectable()
+export class UserService {
+ 
+  constructor(private http :Http) { }
+
+    getUsers (): Observable<any[]> {
+      
+      return this.http.get('http://mocker.egen.io/users')
+                      .map(response => response.json())
+                      .catch(error => Observable.throw(error.statusText));
+    }
+    getUserById (userID): Observable<any> {
+      console.log(userID+ "  inservice")
+        let user = this.http.get(`http://mocker.egen.io/users/${userID}`)
+                              .map(response => response.json())
+                              .catch(error => Observable.throw(error.statusText));
+        console.log(user);
+         return user;
+
+    }
+    
+    /*getUsers(){
+   return this.users;
+   }*/
+}
