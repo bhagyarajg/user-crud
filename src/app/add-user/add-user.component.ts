@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user-service/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,14 +19,16 @@ export class AddUserComponent implements OnInit {
   };
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
   addUser () {
     console.log(this.user);
     this.userService.addUser(this.user)
-    .subscribe( user => console.log(user),
+    .subscribe( user => { console.log(user);
+      this.router.navigate(['/users']);
+                        },
                 error => console.log(error));
   }
 }
