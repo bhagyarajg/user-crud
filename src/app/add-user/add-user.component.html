@@ -1,0 +1,25 @@
+<form name="userForm" (ngSubmit)="addUser()" #myform="ngForm">
+    <div class="form-group">
+        <label for="userFirstName">First  Name</label>
+        <input type="text" class="form-control" id="userFirstName" placeholder="Enter First Name" name="userFirstName" [(ngModel)]="user.firstName">
+    </div>
+    <div class="form-group">
+        <label for="userLastName">Last Name</label>
+        <input type="email" class="form-control" id="userLastName" placeholder="Enter Last Name" name="userLastName" [(ngModel)]="user.lastName">
+    </div>
+    <div class="form-group">
+        <label for="userEmail">Email address</label>
+        <input type="email" class="form-control" id="userEmail" placeholder="Enter email" email="userEmail" name="email" [(ngModel)]="user.email">
+    </div>
+    <div class="form-group">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control" name="userState" [(ngModel)]="user.address.state">
+          <option selected>Choose a state...</option>
+          <option value = "FL">Florida</option>
+          <option value = "NE">Nebraska</option>
+          <option value = "TX">Texas</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
